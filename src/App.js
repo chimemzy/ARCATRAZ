@@ -66,7 +66,7 @@ export default function Arcatraz() {
   const timeoutsRef = useRef([]);
 
   const ngnAmount = (parseFloat(usdcAmount || 0) * rate).toLocaleString('en-NG', { maximumFractionDigits: 0 });
-  const fee = 0; // gas-sponsored, no fee shown to sender
+
 
   const goReview = () => setStep('review');
 
