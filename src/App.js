@@ -1,3 +1,4 @@
+import DigitInput from './components/DigitInput';
 import React, { useState, useEffect, useRef } from 'react';
 import { ethers } from 'ethers';
 import { ArrowRight, Zap, ShieldCheck, Radio, ChevronRight, Check, Loader2, Wallet, Receipt, Users, Store, AlertCircle } from 'lucide-react';
@@ -468,11 +469,31 @@ export default function Arcatraz() {
                 </div>
               )}
               {(recipientType === 'bill' || recipientType === 'person') && (
-                <div className="field-group">
-                  <label className="field-label">{recipientType === 'bill' ? BILLER_FIELD_LABEL[billCategory] : 'Bank account or mobile number'}</label>
-                  <input className="bfield" placeholder={recipientType === 'bill' ? BILLER_FIELD_PLACEHOLDER[billCategory] : 'e.g. 0803 XXX XXXX'} value={accountRef} onChange={e => setAccountRef(e.target.value)} />
-                </div>
-              )}
+  <div className="field-group">
+    <label className="field-label">
+      {recipientType === 'bill' ? BILLER_FIELD_LABEL[billCategory] : 'Bank account or mobile number'}
+    </label>
+    <DigitInput
+      maxDigits={
+        recipientType === 'bill'
+          ? (billCategory === 'electricity' ? 11
+            : billCategory === 'water' ? 10
+            : billCategory === 'airtime' ? 11
+            : billCategory === 'tv' ? 10
+            : 11)
+          : 11
+      }
+      value={accountRef}
+      onChange={setAccountRef}
+      placeholder={
+        recipientType === 'bill'
+          ? BILLER_FIELD_PLACEHOLDER[billCategory]
+          : 'e.g. 0803 XXX XXXX'
+      }
+    />
+  </div>
+)}
+              
               <div className="field-group" style={{ marginBottom: 0 }}>
                 <label className="field-label">Amount to send (testnet USDC)</label>
                 <div className="amount-row">
