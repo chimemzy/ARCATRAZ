@@ -66,7 +66,6 @@ const BILLER_FIELD_PLACEHOLDER = {
 
 // ---- Arc Testnet + contract config ----
 const ARC_CHAIN_ID_HEX = '0x4cef52'; // 5042002
-const ARC_CHAIN_ID_DEC = 5042002;
 const ARC_RPC_URL = 'https://rpc.testnet.arc.network';
 const ARC_EXPLORER = 'https://testnet.arcscan.app';
 const CONTRACT_ADDRESS = '0x0F17FD51Ddf2aEC6639Bf6B919673F5eea36236D'; // <-- your deployed PayoutReceiver
